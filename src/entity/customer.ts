@@ -1,44 +1,44 @@
-/**
- * Uma entidade anêmica ( -> Ela tem um ID unico, tem atributos..) 
- * é uma classe que não carrega
- * regra de negocio, tem apenas seus getters e setters.
- * 
- */
+import Address from "./address";
 
 class Customer {
   
   _id: string;
   _name: string;
-  _address: string;
+  _address!: Address;
+  _active: boolean = false;
 
-  constructor(id: string, name: string, address: string) {
+  constructor(id: string, name: string) {
     this._id = id;
     this._name = name;
-    this._address = address;
+    this.validate();
   }
 
-  get id(): string {
-    return this._id;
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-
-  get address(): string {
-    return this._address;
-  }
-
-  set id(id: string) {
-    this._id = id;
-  }
-
-  set name(name: string) {
+  changeName(name: string) {
     this._name = name;
   }
 
-  set address(address: string) {
+  validate() { 
+    if(this._name.length === 0 ) {
+      throw new Error("Name is required");
+    }
+    if(this._id.length === 0 ) {
+      throw new Error("Id is required");
+    }
+  }
+
+  activate() {
+    if(this._address === undefined ) {
+      throw new Error("Address is mandatory to activate a customer");
+    }
+    this._active = true;
+  }
+
+  deactivate() {
+    this._active = false;
+  }
+
+  setAddres(address: Address){
     this._address = address;
   }
+  
 }
