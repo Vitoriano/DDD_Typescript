@@ -1,6 +1,8 @@
 /**
- * Uma entidade anêmica e uma classe que não carrega
- * regra de negocio tem apenas seus getters e setters.
+ * Uma entidade anêmica ( -> Ela tem um ID unico, tem atributos..) 
+ * é uma classe que não carrega
+ * regra de negocio, tem apenas seus getters e setters.
+ * 
  */
 
 class Customer {
