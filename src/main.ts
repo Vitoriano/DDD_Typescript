@@ -6,7 +6,7 @@ import OrderItem from './entity/order_item';
 let customer = new Customer('123', "Vitoriano");
 const address = new Address("Rua dois", "123", "59290-000", "Natal");
 
-customer.setAddres(address);
+customer.setAddress(address);
 customer.activate();
 
 const item1 = new OrderItem("1", "Item1", 10);
