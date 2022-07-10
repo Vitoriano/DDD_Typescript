@@ -22,12 +22,21 @@ describe("Order unit tests", () => {
    });
 
    it("Should calculate total", () => {
-    const item1 = new OrderItem("1", "Item1", 10);
-    const item2 = new OrderItem("2", "Item2", 15);
+    const item1 = new OrderItem("1","p1", "Item1", 10, 2);
+    const item2 = new OrderItem("2", "p2", "Item2", 20, 2);
 
     const order = new Order("1", "123",[item1, item2]);
-    expect(order.total()).toBe(25);
+    expect(order.total()).toBe(60);
 
+   });
+
+   it("Should throw error if the qtd is less than 0 ", () => {
+
+    expect(() => {
+      const item1 = new OrderItem("1","p1", "Item1", 10, -2);
+      const order = new Order("1", "123",[item1]);
+
+    }).toThrowError("Quantity must be greater than 0");
    });
 
 
